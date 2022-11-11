@@ -17,10 +17,65 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link type="text/css" rel="stylesheet" href="css/magicscroll.css"/>
+<script type="text/javascript" src="js/magicscroll.js"></script>
     <title>Document</title>
+    <script>
+            function arrowRight() {
+              var scroll = document.getElementById("scroll")
+              scroll.scrollTo({
+                top:0,
+                left: 20,
+                behavior:"smooth"
+              })
+        }
+        function arrowLeft() {
+          var scroll = document.getElementById("scroll")
+          scroll.scrollTo({
+                top:0,
+                right: 20,
+                behavior:"smooth"
+              })
+        }
+      window.onload = function () {
+        var btn = document.querySelector(".UP");
+        window.onscroll = function () {
+          if (window.scrollY >= 500) {
+            btn.style.display = "block";
+            btn.style.background = "#54bab9";
+            btn.style.color = "white";
+          } else btn.style.display = "none";
+        };
+        btn.onclick = function () {
+          scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+        };
+        function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+      };
+    </script>
   </head>
   <body>
-    <div class="Section1" dir="rtl" lang="ar">
+    <button class="btn UP">UP</button>
+    <div class="Section1 reveal" dir="rtl" lang="ar">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand" href="#">منصة تجربة</a>
@@ -53,7 +108,7 @@
                 <a class="nav-link" href="#">تجربة المنصة</a>
               </li>
             </ul>
-            <div>
+            <div class="auth">
               <button type="button" class="btn login">تسجيل الدخول</button>
               <button type="button" class="btn signUp">الاشتراك</button>
             </div>
@@ -76,7 +131,7 @@
         </span>
       </div>
     </div>
-    <div class="Section2 mt-5 container" dir="rtl" lang="ar">
+    <div class="Section2 reveal mt-5 container" dir="rtl" lang="ar">
       <div class="row">
         <div class="col-sm-12 col-md-5 col-xl-3 mb-2">
           <h2>إحصائيات مستخدمين منصة تجربة</h2>
@@ -104,7 +159,7 @@
         </div>
       </div>
     </div>
-    <div class="Section3 mt-5" dir="rtl" lang="ar">
+    <div class="Section3 reveal mt-5" dir="rtl" lang="ar">
       <div class="container">
         <div class="row justify-content-center">
           <div class="card mb-3" style="max-width: 1000px">
@@ -151,7 +206,7 @@
         </div>
       </div>
     </div>
-    <div class="Section4 mt-5" dir="rtl" lang="ar">
+    <div class="Section4 reveal mt-5" dir="rtl" lang="ar">
       <h1 class="title">لماذا أختار تجربة ؟؟</h1>
       <div class="container mt-5">
         <div class="row justify-content-center gap-3">
@@ -218,7 +273,7 @@
         </div>
       </div>
     </div>
-    <div class="Section5 mt-5" dir="rtl" lang="ar">
+    <div class="Section5 reveal mt-5" dir="rtl" lang="ar">
       <h1 class="title">لماذا أختار تجربة ؟؟</h1>
       <div class="plane" style="text-align: center">
         <button class="btn ms-4">سنوي</button>
@@ -283,10 +338,11 @@
         </div>
       </div>
     </div>
-    <div style="margin-top: 150px" class="Section6" dir="rtl" lang="ar">
+    <div style="margin-top: 150px" class="Section6 reveal" dir="rtl" lang="ar">
       <h1 class="title mb-5">شركائنا في النجاح</h1>
       <div class="container">
-        <div class="row gap-3 justify-content-center">
+        <div class="row MagicScroll gap-3 justify-content-center" id="scroll" style="flex-wrap: nowrap;
+        overflow: hidden;">
           <div class="card text-white" style="max-width: 16rem">
             <div class="background">
               <button class="btn btn-outline-light">عرض التفاصيل</button>
@@ -323,6 +379,24 @@
               <h5 class="card-title">متجر زدنا</h5>
             </div>
           </div>
+          <div class="card text-white" style="max-width: 16rem">
+            <div class="background">
+              <button class="btn btn-outline-light">عرض التفاصيل</button>
+            </div>
+            <img src="img/product4.svg" class="card-img" alt="..." />
+            <div class="card-img-overlay">
+              <h5 class="card-title">متجر زدنا</h5>
+            </div>
+          </div>
+          <div class="card text-white" style="max-width: 16rem">
+            <div class="background">
+              <button class="btn btn-outline-light">عرض التفاصيل</button>
+            </div>
+            <img src="img/product4.svg" class="card-img" alt="..." />
+            <div class="card-img-overlay">
+              <h5 class="card-title">متجر زدنا</h5>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -330,19 +404,19 @@
         role="toolbar"
         aria-label="Toolbar with button groups"
       >
-        <div class="btn-group" role="group" aria-label="Third group">
+        <!--<div class="btn-group" role="group" aria-label="Third group">
           <button type="button" class="btn" style="background: #54bab9">
-            <img src="img/arowRight.svg" alt="" srcset="" />
+            <img src="img/arowRight.svg"  alt="" srcset="" />
           </button>
         </div>
         <div class="btn-group me-2" role="group" aria-label="First group">
-          <button type="button" class="btn" style="background: #dadada">
+          <button type="button" class="btn" onclick="arrowLeft()" style="background: #dadada">
             <img src="img/arowLeft.svg" alt="" srcset="" />
           </button>
-        </div>
+        </div>-->
       </div>
     </div>
-    <div class="Section7 mt-5 pt-5" dir="rtl" lang="ar">
+    <div class="Section7 reveal mt-5 pt-5" dir="rtl" lang="ar">
       <h1 class="title pb-5">ماذا يقول المستخدمون عنا ؟؟</h1>
       <div
         id="carouselExampleDark"
@@ -438,7 +512,7 @@
         </button>
       </div>
     </div>
-    <div class="Section8 mt-5" dir="rtl" lang="ar">
+    <div class="Section8 reveal mt-5" dir="rtl" lang="ar">
       <div class="container-fluid">
         <div class="card">
           <div class="row justify-content-center">
@@ -461,7 +535,7 @@
         </div>
       </div>
     </div>
-    <div class="Section9 mt-5 mb-5" dir="rtl" lang="ar">
+    <div class="Section9 reveal mt-5 mb-5" dir="rtl" lang="ar">
       <div>
         <h1>تواصل معنا </h1>
         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص <br>العربى، حيث يمكنك أن تولد مثل هذا النص</p>
